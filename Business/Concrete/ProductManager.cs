@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Constants;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -14,10 +15,12 @@ namespace Business.Concrete
     public class ProductManager:IProductService
     {
         private IProductDal _productDal;
+        private ICategoryService _categoryService;
 
-        public ProductManager(IProductDal productDal)
+        public ProductManager(IProductDal productDal, ICategoryService categoryService)
         {
             _productDal = productDal;
+            _categoryService = categoryService;
         }
 
         public IDataResult<Product> GetById(int productId)
@@ -32,6 +35,12 @@ namespace Business.Concrete
 
         public IResult Add(Product product)
         {
+            IResult result = BusinessRules.Run(CheckIfProductTitleExists(product.Title),
+                CheckIfCategoryLimitExceeded());
+            if (result != null)
+            {
+                return result;
+            }
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
         }
@@ -54,5 +63,28 @@ namespace Business.Concrete
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductUpdated);
         }
+        private IResult CheckIfProductTitleExists(string title)
+        {
+
+            var result = _productDal.GetList(p => p.Title == title).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.ProductTitleAlreadyExists);
+            }
+
+            return new SuccessResult();
+        }
+
+        private IResult CheckIfCategoryLimitExceeded()
+        {
+            var result = _categoryService.GetList();
+            if (result.Data.Count>15)
+            {
+                return new ErrorResult(Messages.CategoryLimitExceeded);
+            }
+
+            return new SuccessResult();
+        }
+
     }
 }

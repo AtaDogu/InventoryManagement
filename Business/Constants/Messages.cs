@@ -9,6 +9,8 @@ namespace Business.Constants
 {
     public static class Messages
     {
+        public static string CategoryLimitExceeded = "Kategori Limiti aşıldı";
+        public static string ProductTitleAlreadyExists = "Urün ismi zaten var";
         public static string PasswordError = "Hatalı şifre";
         public static string SuccessfulLogin = "Giriş başarılı";
         public static string UserAlreadyExists = "Kullanıcı zaten mevcut";

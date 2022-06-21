@@ -4,12 +4,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Entities.Abstract;
+using Core.Entities;
 
 namespace Core.DataAccess
 {
     public interface IEntityRepository<T>
-    where T : class, IEntity
+        where T : class, IEntity
     {
         T Get(Expression<Func<T, bool>> filter);
         IList<T> GetList(Expression<Func<T, bool>> filter=null);

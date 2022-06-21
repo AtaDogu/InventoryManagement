@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Entities.Abstract;
+﻿using Core.Entities;
 
-namespace Entities.Concrete
+namespace Core.Entities.Concrete
 {
     public class User:IEntity
     {
@@ -20,9 +15,9 @@ namespace Entities.Concrete
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public bool Status { get; set; }
-        public DateTime RegisteredAt { get; set; }
-        public DateTime LastLogin { get; set; }
         public string Intro { get; set; }
         public string Profile { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }
