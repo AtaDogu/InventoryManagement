@@ -9,6 +9,31 @@ namespace Business.Constants
 {
     public static class Messages
     {
+        public static string BrandUpdated = "Marka Güncellendi";
+        public static string BrandDeleted = "Marka Silindi";
+        public static string BrandAdded = "Marka Eklendi";
+        public static string AddressUpdated = "Adres Güncellendi";
+        public static string AddressDeleted = "Adres Silindi";
+        public static string AddressAdded = "Adres Eklendi";
+        public static string OrderUpdated = "Sipariş Güncellendi";
+        public static string OrderDeleted = "Sipariş Silindi";
+        public static string OrderAdded = "Sipariş Eklendi";
+        public static string ItemUpdated = "Öğe Güncellendi";
+        public static string ItemDeleted = "Öğe Silindi";
+        public static string ItemAdded = "Öğe Eklendi";
+        public static string OrderItemUpdated = "Sipariş Öğesi Güncellendi";
+        public static string OrderItemDeleted = "Sipariş Öğesi Silindi";
+        public static string OrderItemAdded = "Sipariş Öğesi Eklendi";
+        public static string OperationClaimUpdated = "Operasyon Yetkisi Güncellendi";
+        public static string OperationClaimDeleted = "Operasyon Yetkisi Silindi";
+        public static string OperationClaimAdded = "Operasyon Yetkisi Eklendi";
+        public static string UserOperationClaimUpdated = "Kullanıcı Operasyon Yetkisi Güncellendi";
+        public static string UserOperationClaimDeleted = "Kullanıcı Operasyon Yetkisi Silindi";
+        public static string UserOperationClaimAdded = "Kullanıcı Operasyon Yetkisi Eklendi";
+        public static string UserDeleted = "Kullanıcı Silindi";
+        public static string UserUpdated = "Kullanıcı Güncellendi";
+        public static string UserListed = "Kullanıcı Listelendi";
+        public static string UserAdded = "Kullanıcı Eklendi";
         public static string CategoryLimitExceeded = "Kategori Limiti aşıldı";
         public static string ProductTitleAlreadyExists = "Urün ismi zaten var";
         public static string PasswordError = "Hatalı şifre";
