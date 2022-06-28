@@ -20,7 +20,7 @@ namespace Business.Concrete
             _itemDal = itemDal;
         }
 
-        public IDataResult<List<Item>> GetAll()
+        public IDataResult<List<Item>> GetList()
         {
             return new SuccessDataResult<List<Item>>(_itemDal.GetList().ToList());
         }

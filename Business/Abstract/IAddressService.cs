@@ -10,7 +10,7 @@ namespace Business.Abstract
 {
     public interface IAddressService
     {
-        public IDataResult<List<Address>> GetAll();
+        public IDataResult<List<Address>> GetList();
         public IDataResult<Address> Get(int id);
         public IResult Add(Address address);
         public IResult Delete(Address address);

@@ -20,7 +20,7 @@ namespace Business.Concrete
             _addressDal = addressDal;
         }
 
-        public IDataResult<List<Address>> GetAll()
+        public IDataResult<List<Address>> GetList()
         {
             return new SuccessDataResult<List<Address>>(_addressDal.GetList().ToList());
         }

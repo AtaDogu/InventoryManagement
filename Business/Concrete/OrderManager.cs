@@ -20,7 +20,7 @@ namespace Business.Concrete
             _orderDal = orderDal;
         }
 
-        public IDataResult<List<Order>> GetAll()
+        public IDataResult<List<Order>> GetList()
         {
             return new SuccessDataResult<List<Order>>(_orderDal.GetList().ToList());
         }

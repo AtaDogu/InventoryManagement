@@ -10,7 +10,7 @@ namespace Business.Abstract
 {
     public interface IOrderService
     {
-        public IDataResult<List<Order>> GetAll();
+        public IDataResult<List<Order>> GetList();
         public IDataResult<Order> Get(int id);
         public IResult Add(Order order);
         public IResult Delete(Order order);
