@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Logging;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
@@ -35,7 +37,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Product>>(_productDal.GetList().ToList());
         }
-
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
             IResult result = BusinessRules.Run(CheckIfProductTitleExists(product.Title),

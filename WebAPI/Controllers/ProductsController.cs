@@ -20,11 +20,10 @@ namespace WebAPI.Controllers
         //[Authorize(Roles = "Product.List")]
         public IActionResult GetList()
         {
-            
             var result = _productService.GetList();
             if (result.IsSuccess)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
 
             return BadRequest(result.Message);
@@ -48,7 +47,7 @@ namespace WebAPI.Controllers
             var result = _productService.Add(product);
             if (result.IsSuccess)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
 
             return BadRequest(result.Message);

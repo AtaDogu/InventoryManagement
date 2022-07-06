@@ -15,7 +15,7 @@ namespace Entities.Concrete
         public long BrandId { get; set; }
         public long SupplierId { get; set; }
         public long OrderId { get; set; }
-        public string Sku { get; set; }
+        public string? Sku { get; set; }
         public double Mrp { get; set; }
         public double Discount { get; set; }
         public double Price { get; set; }

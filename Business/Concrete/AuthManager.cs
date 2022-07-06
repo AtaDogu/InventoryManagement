@@ -34,6 +34,8 @@ namespace Business.Concrete
                 Email = userForRegisterDto.Email,
                 FirstName = userForRegisterDto.FirstName,
                 LastName = userForRegisterDto.LastName,
+                CreatedAt = userForRegisterDto.CreatedAt,
+                UpdatedAt = userForRegisterDto.UpdatedAt,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
                 Status = true
@@ -60,7 +62,7 @@ namespace Business.Concrete
 
         public IResult UserExists(string email)
         {
-            if (_userService.GetByMail(email)!=null)
+            if (_userService.GetByMail(email).Data != null)
             {
                 return new ErrorResult(Messages.UserAlreadyExists);
             }

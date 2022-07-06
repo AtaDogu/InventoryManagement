@@ -7,19 +7,19 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrdersController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
-        private IOrderService _orderService;
+        private ICategoryService _categoryService;
 
-        public OrdersController(IOrderService orderService)
+        public CategoriesController(ICategoryService categoryService)
         {
-            _orderService = orderService;
+            _categoryService = categoryService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetList()
         {
-            var result = _orderService.GetList();
+            var result = _categoryService.GetList();
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -29,20 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getbyid")]
-        public IActionResult GetById(int id)
+        public IActionResult GetById(int categoryId)
         {
-            var result = _orderService.Get(id);
-            if (result.IsSuccess)
-            {
-                return Ok(result.Data);
-            }
-
-            return BadRequest(result.Message);
-        }
-        [HttpPost("add")]
-        public IActionResult Add(Order order)
-        {
-            var result = _orderService.Add(order);
+            var result = _categoryService.GetCategory(categoryId);
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -50,10 +39,23 @@ namespace WebAPI.Controllers
 
             return BadRequest(result.Message);
         }
-        [HttpPost("delete")]
-        public IActionResult Delete(Order order)
+
+        [HttpPost("add")]
+        public IActionResult Add(Category category)
         {
-            var result = _orderService.Delete(order);
+            var result = _categoryService.Add(category);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result.Message);
+        }
+
+        [HttpPost("update")]
+        public IActionResult Update(Category category)
+        {
+            var result = _categoryService.Update(category);
             if (result.IsSuccess)
             {
                 return Ok(result.Message);
@@ -61,10 +63,11 @@ namespace WebAPI.Controllers
 
             return BadRequest(result.Message);
         }
-        [HttpPost("update")]
-        public IActionResult Update(Order order)
+
+        [HttpPost("delete")]
+        public IActionResult Delete(Category category)
         {
-            var result = _orderService.Update(order);
+            var result = _categoryService.Delete(category);
             if (result.IsSuccess)
             {
                 return Ok(result.Message);

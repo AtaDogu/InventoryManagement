@@ -12,14 +12,14 @@ namespace Business.ValidationRules.FluentValidation
     {
         public ProductValidator()
         {
-            RuleFor(p => p.Id).NotEmpty();
+            
             RuleFor(p => p.Title).NotEmpty();
-            RuleFor(p => p.Title).Must(NotStartWithX);
+            RuleFor(p => p.Title).Must(StartWithX);
         }
 
-        private bool NotStartWithX(string arg)
+        private bool StartWithX(string arg)
         {
-            return (!arg.StartsWith("X"));
+            return arg.StartsWith("x");
         }
     }
 }

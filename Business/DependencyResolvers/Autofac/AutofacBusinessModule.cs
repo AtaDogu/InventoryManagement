@@ -31,6 +31,27 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
+            builder.RegisterType<ItemManager>().As<IItemService>().SingleInstance();
+            builder.RegisterType<EfItemDal>().As<IItemDal>().SingleInstance();
+
+            builder.RegisterType<OrderManager>().As<IOrderService>().SingleInstance();
+            builder.RegisterType<EfOrderDal>().As<IOrderDal>().SingleInstance();
+
+            builder.RegisterType<BrandManager>().As<IBrandService>().SingleInstance();
+            builder.RegisterType<EfBrandDal>().As<IBrandDal>().SingleInstance();
+
+            builder.RegisterType<AddressManager>().As<IAddressService>().SingleInstance();
+            builder.RegisterType<EfAddressDal>().As<IAddressDal>().SingleInstance();
+
+            builder.RegisterType<OperationClaimManager>().As<IOperationClaimService>().SingleInstance();
+            builder.RegisterType<EfOperationClaimDal>().As<IOperationClaimDal>().SingleInstance();
+
+            builder.RegisterType<UserOperationClaimManager>().As<IUserOperationClaimService>().SingleInstance();
+            builder.RegisterType<EfUserOperationClaimDal>().As<IUserOperationClaimDal>().SingleInstance();
+
+            builder.RegisterType<OrderItemManager>().As<IOrderItemService>().SingleInstance();
+            builder.RegisterType<EfOrderItemDal>().As<IOrderItemDal>().SingleInstance();
+
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
